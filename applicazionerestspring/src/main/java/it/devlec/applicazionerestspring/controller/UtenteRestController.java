@@ -26,13 +26,15 @@ public class UtenteRestController {
         logger.info("Prendo tutti gli utenti");
         return repository.findAll();
     }
-    @GetMapping("/marco/{id}")
+    @GetMapping("/utente/{id}")
     public Utente trovaUtenteConID(@PathVariable Long id){
+
         return repository.findById(id).orElseThrow(
                 () -> new UtenteNonTrovato(id));
     }
     @PostMapping("/utente")
     public Utente inserisciUnNuovoUtente(@RequestBody Utente nuovoUtente){
+
         return repository.save(nuovoUtente);
     }
     @PutMapping("/utente")
@@ -71,10 +73,8 @@ public class UtenteRestController {
     }
     @GetMapping("/utente/ricercadataregistrazione")
     public List<Utente> ricercaUtenteConDataDiRegistrazione(
-            @RequestParam(name="datada") @DateTimeFormat(pattern = "dd-MM-yyyy")
-                    Date datada,
-            @RequestParam(name = "dataa") @DateTimeFormat(pattern = "dd-MM-yyyy")
-                    Date dataa
+            @RequestParam(name="datada") @DateTimeFormat(pattern = "dd-MM-yyyy") Date datada,
+            @RequestParam(name = "dataa") @DateTimeFormat(pattern = "dd-MM-yyyy") Date dataa
     ){
         return repository.findByDatadiregistrazioneBetween(datada, dataa);
     }

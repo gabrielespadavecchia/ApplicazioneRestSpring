@@ -42,8 +42,8 @@ public class ApplicazionerestspringApplication {
 				logger.error(beans[i]);
 			}
 			//codice manipolazione date
-			SimpleDateFormat simpleDateFormat =
-					new SimpleDateFormat("dd-MM-yyyy");
+
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 			Date a = simpleDateFormat.parse("23-04-2021");
 			logger.info(a.toString());
 			Date oggi = new Date();
